@@ -10,11 +10,15 @@
     "remove": "sst remove"
   },
   "eslintConfig": {
-    "extends": ["serverless-stack"]
+    "extends": [
+      "serverless-stack"
+    ]
   },
   "dependencies": {
     "@serverless-stack/cli": "0.60.8",
     "@serverless-stack/resources": "0.60.8",
-    "aws-cdk-lib": "2.7.0"
+    "aws-cdk-lib": "2.7.0",
+    "aws-sdk": "^2.1066.0",
+    "uuid": "^7.0.3"
   }
 }
