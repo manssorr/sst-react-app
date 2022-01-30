@@ -1,0 +1,81 @@
+curl -X POST \
+-H 'Content-Type: application/json' \
+-d '{"content":"Mansour Hi!","attachment":"Salamalykom.jpg"}' \
+https://n2sjua602f.execute-api.us-east-1.amazonaws.com/notes
+
+"noteId": "a4db5480-81f9-11ec-a96f-7d268a1e82e8"
+
+curl https://n2sjua602f.execute-api.us-east-1.amazonaws.com/notes/a4db5480-81f9-11ec-a96f-7d268a1e82e8
+
+curl  https://n2sjua602f.execute-api.us-east-1.amazonaws.com/notes
+
+
+curl -X PUT \
+-H 'Content-Type: application/json' \
+-d '{"content":"New World","attachment":"new.jpg"}' \
+https://n2sjua602f.execute-api.us-east-1.amazonaws.com/notes/a4db5480-81f9-11ec-a96f-7d268a1e82e8
+
+
+curl -X DELETE https://n2sjua602f.execute-api.us-east-1.amazonaws.com/notes/a4db5480-81f9-11ec-a96f-7d268a1e82e8
+
+
+Stack koure-mans-sst-auth
+  Status: deployed
+  Outputs:
+    IdentityPoolId: us-east-1:b5bbdf1c-b522-4ae6-855d-d0bdd2ad9ec2
+    Region: us-east-1
+    UserPoolClientId: 2crm1q1m717ho6sra591hifjjv
+    UserPoolId: us-east-1_XKlUdgJeF
+
+aws cognito-idp sign-up \
+  --region us-east-1 \
+  --client-id 2crm1q1m717ho6sra591hifjjv \
+  --username admin@example.com \
+  --password Passw0rd!
+  
+  {
+    "UserConfirmed": false,
+    "CodeDeliveryDetails": {
+        "Destination": "a***@e***",
+        "DeliveryMedium": "EMAIL",
+        "AttributeName": "email"
+    },
+    "UserSub": "aef9838b-ea15-463e-bd34-b18ceb3b9e32"
+}
+
+
+aws cognito-idp admin-confirm-sign-up \
+  --region us-east-1 \
+  --user-pool-id us-east-1_XKlUdgJeF \
+  --username admin@example.com
+
+
+npx aws-api-gateway-cli-test \
+--username='admin@example.com' \
+--password='Passw0rd!' \
+--user-pool-id='us-east-1_XKlUdgJeF' \
+--app-client-id='2crm1q1m717ho6sra591hifjjv' \
+--cognito-region='us-east-1' \
+--identity-pool-id='us-east-1:b5bbdf1c-b522-4ae6-855d-d0bdd2ad9ec2' \
+--invoke-url='https://n2sjua602f.execute-api.us-east-1.amazonaws.com' \
+--api-gateway-region='us-east-1' \
+--path-template='/notes' \
+--method='POST' \
+--body='{"content":"hello world","attachment":"hello.jpg"}'
+
+
+Authenticating with User Pool
+Getting temporary credentials
+Making API request
+{
+  status: 200,
+  statusText: 'OK',
+  data: {
+    userId: 'us-east-1:33c53e1c-d7e1-45dd-b0ea-1f663f33a07d',
+    noteId: '2c641e20-820c-11ec-bf87-ef9321486a55',
+    content: 'hello world',
+    attachment: 'hello.jpg',
+    createdAt: 1643574933762
+  }
+}
+
