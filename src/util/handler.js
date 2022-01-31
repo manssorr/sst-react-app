@@ -29,6 +29,4 @@ export default function handler(lambda) {
 			},
 		};
 	};
-}git add .
-git commit -m "Adding serverless error logging"
-git push
+}
