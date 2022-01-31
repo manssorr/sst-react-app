@@ -45,11 +45,11 @@ function App() {
 
   return (
     !isAuthenticating && (
-      <div className="App container py-3">
-        <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
+      <div className="App container py-3" >
+        <Navbar collapseOnSelect bg="dark" variant="dark" expand="md" className="mb-3">
           <LinkContainer to="/">
-            <Navbar.Brand className="font-weight-bold text-muted">
-            KoNotes
+            <Navbar.Brand className="font-weight-bold text-muted" >
+            <span className="logo-all" ><span className="logo-1" >Ko</span>Notes</span>
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />

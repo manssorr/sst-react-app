@@ -1,2 +1,10 @@
-.App {
+.App {}
+
+.logo-all {
+	font-weight: 600;
+	color: #69c9d0;
+}
+
+.logo-1 {
+	color: #ee1d52;
 }

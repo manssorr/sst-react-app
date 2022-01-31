@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ListGroup from "react-bootstrap/ListGroup";
+import { ListGroup, Badge } from "react-bootstrap";
 import { useAppContext } from "../lib/contextLib";
 import { onError } from "../lib/errorLib";
 import { API } from "aws-amplify";
@@ -66,7 +66,7 @@ export default function Home() {
 	function renderLander() {
 		return (
 			<div className="lander">
-				<h1>KoNotes</h1>
+				<h1><span>Ko</span>Notes</h1>
 				<p className="text-muted">A simple note taking app</p>
 			</div>
 		);
@@ -75,7 +75,7 @@ export default function Home() {
 	function renderNotes() {
 		return (
 			<div className="notes">
-				<h2 className="pb-3 mt-4 mb-3 border-bottom">Your Notes</h2>
+				<h2 className="pb-3 mt-4 mb-3 border-bottom">Your Notes <Badge pill bg="warning" text="dark">all</Badge> </h2>
 				<ListGroup>{!isLoading && renderNotesList(notes)}</ListGroup>
 			</div>
 		);
